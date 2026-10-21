@@ -146,6 +146,57 @@ def validate_dependencies():
     return issues
 
 
+
+def validate_approvals():
+    """Validate approval records without authenticating decisions."""
+    _, rows = read_csv("approval_register.csv")
+    issues = []
+    seen = set()
+    required = SCHEMAS["approval_register.csv"]
+    allowed = {"APPROVED", "REJECTED", "PENDING", "NEEDS_REVISION"}
+    repo = ROOT.parent.resolve()
+
+    from datetime import date
+
+    for number, row in enumerate(rows, 2):
+        approval_id = (row.get("approval_id") or "").strip()
+        label = approval_id or f"line {number}"
+
+        for field in required:
+            if not (row.get(field) or "").strip():
+                issues.append(f"Approval {label}: missing {field}")
+
+        if not approval_id:
+            continue
+
+        if approval_id in seen:
+            issues.append(f"Approval: duplicate approval_id {approval_id}")
+        seen.add(approval_id)
+
+        status = (row.get("decision_status") or "").strip()
+        if status and status not in allowed:
+            issues.append(f"Approval {approval_id}: invalid status {status}")
+
+        value = (row.get("decision_date") or "").strip()
+        if value:
+            try:
+                parsed = date.fromisoformat(value)
+                if parsed.isoformat() != value:
+                    raise ValueError()
+            except ValueError:
+                issues.append(f"Approval {approval_id}: invalid decision_date {value}")
+
+        artifact_path = (row.get("artifact_path") or "").strip()
+        if artifact_path:
+            artifact = (repo / artifact_path).resolve()
+            if not artifact.is_relative_to(repo):
+                issues.append(f"Approval {approval_id}: artifact outside repository")
+            elif not artifact.is_file():
+                issues.append(f"Approval {approval_id}: artifact not found {artifact_path}")
+
+    return issues
+
+
 def main():
     failures = []
     csv_results = {}
@@ -174,6 +225,18 @@ def main():
             print("PASS: dependency references and cycle checks")
     else:
         print("SKIP: dependency checks (execution plan CSV invalid)")
+
+    # Task 3: Approval-record validation.
+    if not csv_results["approval_register.csv"]:
+        approval_issues = validate_approvals()
+        if approval_issues:
+            failures.extend(approval_issues)
+            for issue in approval_issues:
+                print(f"FAIL: {issue}")
+        else:
+            print("PASS: approval record checks")
+    else:
+        print("SKIP: approval checks (approval register CSV invalid)")
 
     if failures:
         print(f"\nValidation FAILED: {len(failures)} issue(s)")
