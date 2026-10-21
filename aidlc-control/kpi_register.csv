@@ -1,0 +1,10 @@
+
+kpi_id,kpi_name,scope,target,actual,unit,evidence,measurement_status,measurement_note
+KPI-001,Execution plan work items,M1-06,14,14,items,aidlc-control/execution_plan.csv,VERIFIED,Count verified through GitHub screenshots
+KPI-002,Dependency corrections,M1-06,5,5,corrections,DEP-003 conversation approval and GitHub commit,VERIFIED,Five approved dependency changes verified
+KPI-003,Risk register coverage,M1-06,5,5,risks,aidlc-control/risk_register.csv,VERIFIED,Five initial risk hypotheses documented
+KPI-004,Risk owner assignment,M1-06,5,5,risks,aidlc-control/risk_register.csv,VERIFIED,All five initial risks have assigned owners
+KPI-005,Automated dependency validation,M1-07,1,NOT_MEASURED,working validator,PENDING,Implementation not started
+KPI-006,Automated approval validation,M1-07,1,NOT_MEASURED,working validator,PENDING,Implementation not started
+KPI-007,Command Center test execution,M1-08,1,NOT_MEASURED,verified test suite,PENDING,Verification not started
+KPI-008,Actual human effort,M1-06,RECORD_WHEN_AVAILABLE,NOT_MEASURED,minutes,PENDING,NOT_MEASURED,Do not estimate missing effort
