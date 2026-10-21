@@ -2,11 +2,11 @@
 work_id,work_item,dependency,owner,priority,status,readiness,gate,evidence
 M1-01,Command Center requirements,NONE,Product Owner,P1,DONE,CONTINUE,G1,Conversation approval M1.1
 M1-02,AI operating instructions,M1-01,Solution Architect,P1,DONE,CONTINUE,G1,aidlc-control/AI_OPERATING_INSTRUCTIONS.md
-M1-03,Approval register and data dictionary,M1-02,Solution Architect,P1,DONE,CONTINUE,G1,aidlc-control/approval_register.csv
-M1-04,Project charter template,M1-03,Product Owner,P1,DONE,CONTINUE,G1,aidlc-control/templates/PROJECT_CHARTER_TEMPLATE.md
-M1-05,Gate definitions,M1-04,Solution Architect,P1,DONE,CONTINUE,G1,aidlc-control/GATE_DEFINITIONS.md
-M1-06,Execution plan and KPI tracking,M1-05,Solution Architect,P1,IN_PROGRESS,NOT_ASSESSED,G1,PENDING
-M1-07,Automated approval validator,M1-06,Software Engineer,P1,PLANNED,NOT_ASSESSED,G2,PENDING
+M1-03,Approval register and data dictionary,M1-01,Solution Architect,P1,DONE,CONTINUE,G1,aidlc-control/approval_register.csv
+M1-04,Project charter template,M1-01,Product Owner,P1,DONE,CONTINUE,G1,aidlc-control/templates/PROJECT_CHARTER_TEMPLATE.md
+M1-05,Gate definitions,M1-01;M1-04,Solution Architect,P1,DONE,CONTINUE,G1,aidlc-control/GATE_DEFINITIONS.md
+M1-06,Execution plan and KPI tracking,M1-01;M1-05,Solution Architect,P1,IN_PROGRESS,NOT_ASSESSED,G1,PENDING
+M1-07,Automated approval validator,M1-02;M1-03;M1-05;M1-06,Software Engineer,P1,PLANNED,NOT_ASSESSED,G2,PENDING
 M1-08,Command Center verification,M1-07,QA Engineer,P1,PLANNED,NOT_ASSESSED,G3,PENDING
 M2-01,CustomerConnect business charter,M1-08,Product Owner,P1,PLANNED,NOT_ASSESSED,G1,PENDING
 M2-02,Requirements and backlog,M2-01,Business Analyst,P1,PLANNED,NOT_ASSESSED,G1,PENDING
