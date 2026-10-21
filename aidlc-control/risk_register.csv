@@ -4,3 +4,5 @@ R-001,M1-07,Approval validator may not correctly detect invalid or missing appro
 R-002,M1-06,Execution plan dependency references may contain invalid IDs or cycles,MEDIUM,HIGH,OWNED,Solution Architect,Validate reference integrity and detect cycles in M1-07,BLOCK,PENDING
 R-003,M2-03,Unclear customer authentication requirements could delay API contract approval,MEDIUM,HIGH,OWNED,Product Owner,Clarify access requirements before G2 approval,AT_RISK,PENDING
 R-004,M2-04,Implementation scope could exceed the zero cost portfolio constraint,MEDIUM,MEDIUM,MITIGATED,Product Owner,Restrict implementation to local open source components and approved MVP scope,AT_RISK,Approved scope baseline in conversation
+R-006,M2-04,Unauthorized customer access to another customer's request data,MEDIUM,HIGH,OWNED,Product Owner,Define customer isolation requirements and verify negative authorization tests before release,BLOCK,PENDING
+
