@@ -1,4 +1,3 @@
-
 work_id,work_item,dependency,owner,priority,status,readiness,gate,evidence
 M1-01,Command Center requirements,NONE,Product Owner,P1,DONE,CONTINUE,G1,Conversation approval M1.1
 M1-02,AI operating instructions,M1-01,Solution Architect,P1,DONE,CONTINUE,G1,aidlc-control/AI_OPERATING_INSTRUCTIONS.md
