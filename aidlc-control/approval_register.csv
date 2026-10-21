@@ -1,3 +1,9 @@
 
 approval_id,artifact_id,artifact_path,artifact_version,approver_role,decision_status,evidence_reference,decision_date
-APR-001,AI-INSTRUCTIONS,aidlc-control/AI_OPERATING_INSTRUCTIONS.md,1.0,Product Owner,APPROVED,Conversation approval of M1.2 Task 2,2026-10-20
+APR-001,AI-INSTRUCTIONS,aidlc-control/AI_OPERATING_INSTRUCTIONS.md,1.0,Product Owner,APPROVED,Conversation approval M1.2 Task 2,2026-10-20
+APR-002,CHARTER-TEMPLATE,aidlc-control/templates/PROJECT_CHARTER_TEMPLATE.md,0.2,Product Owner,APPROVED,Conversation approval M1.3 Task 1,2026-10-20
+APR-003,GATE-DEFINITIONS,aidlc-control/GATE_DEFINITIONS.md,0.3,Product Owner,APPROVED,Conversation approval M1.3 Task 2,2026-10-20
+APR-004,EXECUTION-PLAN,aidlc-control/execution_plan.csv,1.0,Product Owner,APPROVED,Conversation approval M1.3 Task 3 Step 1,2026-10-21
+APR-005,DEP-003,aidlc-control/execution_plan.csv,1.0,Product Owner,APPROVED,Conversation approval DEP-003 and GitHub commit docs: refine AIDLC execution dependencies,2026-10-21
+APR-006,RISK-001,aidlc-control/risk_register.csv,1.0,Product Owner,APPROVED,Conversation approval RISK-001 and GitHub commit docs: add customer data isolation risk,2026-10-21
+APR-007,KPI-BASE-001,aidlc-control/kpi_register.csv,1.0,Product Owner,APPROVED,Conversation approval KPI-BASE-001 and GitHub commit fix: correct AIDLC KPI register CSV formatting,2026-10-21
