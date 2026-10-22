@@ -45,6 +45,55 @@ flowchart TD
 
 The Command Center connects delivery artifacts with executable validation rules. Human decision-makers retain responsibility for business priorities, risk acceptance, and formal approvals.
 
+## 2. AIDLC Prototype Operating Model
+
+I designed this **prototype operating model** to explore how individuals can use AI to accelerate their own responsibilities while still collaborating through a shared delivery framework. The goal is not to make everyone use the same AI tool, but to keep requirements, delivery expectations, evidence, and human decisions connected.
+
+```mermaid
+flowchart TD
+    A["Shared AIDLC Delivery Foundation<br/>Business objectives · Requirements · Policies · Guardrails · Human authority"]
+
+    PO["Product Owner + AI<br/>Discovery · Backlog · Acceptance"]
+    AR["Architect + AI<br/>Design · Dependencies · Risks"]
+    EN["Engineer + AI<br/>Implementation · Code Review"]
+    QA["QA + AI<br/>Test Design · Validation · Evidence"]
+
+    CC["AIDLC Command Center<br/>Shared Governance & Verification<br/>Execution Plan · Risks · KPIs · Approvals · Validation"]
+    HD["Evidence-Informed Human Decisions<br/>Readiness Review · Exceptions · Acceptance · Release Decision"]
+
+    A --> PO
+    A --> AR
+    A --> EN
+    A --> QA
+    PO --> CC
+    AR --> CC
+    EN --> CC
+    QA --> CC
+    CC --> HD
+
+    classDef foundation fill:#eef2ff,stroke:#64748b,color:#1e293b
+    classDef role fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    classDef control fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    classDef decision fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class A foundation
+    class PO,AR,EN,QA role
+    class CC control
+    class HD decision
+```
+
+### What the layers mean
+
+- **Shared AIDLC Delivery Foundation — the common rules:** The team works from agreed objectives, requirements, policies, and decision rights, even when people use different AI assistants.
+- **Role-specific AI assistance — the individual workspaces:** A Product Owner can use AI to refine requirements, an architect to explore design options, an engineer to draft and review code, and QA to develop test scenarios. Each person reviews their own outputs.
+- **AIDLC Command Center — the shared checkpoint:** This is the layer I prototyped. Its structured records organize work, dependencies, risks, KPIs, and approval references. Its Python validator detects specified structural and integrity issues.
+- **Evidence-informed human decisions — the accountability layer:** Checks and AI-generated insights support reviews, but authorized people decide whether work is accepted or ready for release.
+
+### A simple example: CustomerConnect service discovery
+
+Suppose a customer-service company needs customers to browse its available services. The Product Owner defines that need as **CC-R01**. The engineer builds `GET /services`, and QA verifies the expected response. The Command Center can record references to that requirement, the implementation, and the test evidence, then validate the integrity of its structured records. The Product Owner still decides whether the behavior meets the business need.
+
+**What is demonstrated versus illustrative:** The Command Center's registers and validator are implemented and tested; the CustomerConnect service-discovery endpoint and automated tests also exist. The four role-specific AI workspaces and automatic flow of evidence between tools are **illustrations of the operating model**, not integrated applications or agents in this repository. The CC-R01 linkage has been made locally and is still undergoing review; it is not a fully automated traceability system.
+
 ## What I Built — Milestone 1
 
 | Component | Purpose |
