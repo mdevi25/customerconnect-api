@@ -157,14 +157,6 @@ The Command Center currently validates defined records and relationships. It doe
 
 These capabilities are deliberately outside the completed MVP scope.
 
-## Next — Milestone 2: CustomerConnect API
-
-The next milestone will apply the AIDLC approach to build a customer-facing service-request API using synthetic data and zero-cost development tools.
-
-Planned capabilities include service discovery, request submission, persistent request storage, and secure request-status retrieval.
-
-**Milestone 2 status: Authorized, not started.**
-
 ---
 
 **Portfolio focus:** Product Ownership · Technical Product Management · AI-Assisted Development · Requirements Traceability · Dependency Management · Automated Verification · Human-Governed Delivery
