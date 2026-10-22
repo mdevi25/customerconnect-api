@@ -1,4 +1,4 @@
-# CustomerConnect API | AI-Assisted Product Development Life Cycle
+# CustomerConnect API | AI-Assisted Product Delivery Life Cycle
 
 **From business intent to verifiable AI-assisted delivery.**
 
