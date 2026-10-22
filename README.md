@@ -41,6 +41,15 @@ flowchart TD
     C --> E
     D --> E
     E --> F
+
+    classDef foundation fill:#eef2ff,stroke:#64748b,color:#1e293b
+    classDef role fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    classDef control fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    classDef decision fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class A foundation
+    class C,D,E role
+    class B control
+    class F decision
 ```
 
 The Command Center connects delivery artifacts with executable validation rules. Human decision-makers retain responsibility for business priorities, risk acceptance, and formal approvals.
@@ -143,6 +152,13 @@ flowchart LR
     end
 
     C --> E
+
+    classDef foundation fill:#eef2ff,stroke:#64748b,color:#1e293b
+    classDef role fill:#f8fafc,stroke:#94a3b8,color:#1e293b
+    classDef control fill:#dbeafe,stroke:#2563eb,stroke-width:2px,color:#1e3a8a
+    classDef decision fill:#dcfce7,stroke:#16a34a,color:#14532d
+    class A,B,C,E,F,G,H role
+    class J decision
 ```
 
 This reflects the delivery of the **Command Center itself**. Testing sits inside Construction, as it does in AWS AI-DLC. The Command Center runs locally from the repository and is not deployed, so Operations and its G3 gate were not in scope for this milestone.
