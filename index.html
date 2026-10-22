@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Human-Centered AI-Assisted Product Development Life Cycle</title>
+  <meta name="description" content="How people and AI share the work of building products, and why people stay accountable for the outcome.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@500;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- Colors (light and dark) ---------- */
+    :root {
+      --page:   #f5f7fa;
+      --surface:#ffffff;
+      --ink:    #1b2638;
+      --muted:  #56637a;
+      --rule:   #d8dee7;
+      --accent: #24607f;
+      --accent-soft: #e4eef3;
+      color-scheme: light;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --page:   #121821;
+        --surface:#19212d;
+        --ink:    #e6ebf2;
+        --muted:  #9aa7ba;
+        --rule:   #2c3747;
+        --accent: #7fb6d4;
+        --accent-soft: #1d2f3c;
+        color-scheme: dark;
+      }
+    }
+
+    /* ---------- Base ---------- */
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--ink);
+      font-family: "Newsreader", Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    .wrap {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 0 1.4rem;
+    }
+
+    h1, h2, h3 { font-weight: 500; line-height: 1.2; }
+
+    a { color: var(--accent); }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .sans {
+      font-family: "Public Sans", system-ui, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ---------- Header ---------- */
+    header { padding: 4.5rem 0 3rem; border-bottom: 1px solid var(--rule); }
+
+    header h1 {
+      font-size: clamp(2.2rem, 6vw, 3.4rem);
+      letter-spacing: -0.02em;
+      margin: 0 0 1.2rem;
+    }
+
+    .lede {
+      font-size: 1.3rem;
+      color: var(--muted);
+      margin: 0 0 1.8rem;
+    }
+
+    .repo-link { text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+    .repo-link:hover { border-bottom-width: 2px; }
+
+    /* ---------- Sections ---------- */
+    section { padding: 3rem 0; border-bottom: 1px solid var(--rule); }
+    section:last-of-type { border-bottom: none; }
+
+    h2 { font-size: 1.9rem; margin: 0 0 1.2rem; }
+    p  { margin: 0 0 1.1rem; }
+
+    .thesis {
+      font-size: 1.55rem;
+      line-height: 1.4;
+      margin: 0 0 1.4rem;
+      padding-left: 1.2rem;
+      border-left: 3px solid var(--accent);
+    }
+
+    /* ---------- AI does / People do ---------- */
+    .pair-list { margin: 2rem 0 0; }
+
+    .pair { padding: 1.6rem 0; border-top: 1px solid var(--rule); }
+
+    .pair h3 { font-size: 1.35rem; margin: 0 0 0.9rem; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+    .split div { font-size: 1.05rem; }
+    .split .sans { display: block; color: var(--muted); margin-bottom: 0.2rem; }
+    .split .people .sans { color: var(--accent); }
+
+    .why { margin: 0.9rem 0 0; font-style: italic; color: var(--muted); }
+
+    /* ---------- Operating model ---------- */
+    .flow {
+      margin: 2rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.6rem;
+    }
+    .step {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+    }
+    .step strong { display: block; font-weight: 600; font-size: 1.15rem; }
+    .step span { color: var(--muted); font-size: 1rem; }
+
+    .step.purpose,
+    .step.outcome { background: var(--accent-soft); border-color: transparent; }
+
+    .roles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .roles .step { padding: 0.9rem 1rem; }
+
+    .step.center { border: 2px solid var(--accent); }
+
+    .down { text-align: center; color: var(--muted); line-height: 1; font-size: 1.2rem; }
+
+    /* ---------- Footer ---------- */
+    footer { padding: 2rem 0 4rem; color: var(--muted); font-size: 1rem; }
+
+    /* ---------- Small screens ---------- */
+    @media (max-width: 560px) {
+      body { font-size: 1.08rem; }
+      header { padding-top: 3rem; }
+      .split, .roles { grid-template-columns: 1fr; gap: 0.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>A human-centered AI-assisted product development life cycle</h1>
+      <p class="lede">How people and AI can share the work of building products, and why people stay accountable for what gets built.</p>
+      <a class="repo-link sans" href="https://github.com/mdevi25/customerconnect-api" target="_blank" rel="noopener">See the code on GitHub</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="idea">
+      <h2>The idea</h2>
+      <p class="thesis">AI speeds up the work. People decide what the work is for, use judgment along the way, and own the results.</p>
+      <p>AI can now draft requirements, code, tests, and documentation. What it can’t do is decide what matters most to a customer, build trust within a team, or take responsibility for a business decision.</p>
+      <p>So the point of bringing AI into product development isn’t just to do the same work faster. It’s to free up people’s time for the parts only they can do: understanding problems, working together, coming up with better ideas, and delivering something that genuinely helps.</p>
+    </section>
+
+    <section id="principles">
+      <h2>What each side brings</h2>
+      <p>Five areas where the split between AI and people matters most.</p>
+
+      <div class="pair-list">
+
+        <div class="pair">
+          <h3>Understanding customers</h3>
+          <div class="split">
+            <div><span class="sans">AI</span>Analyzes requirements and customer feedback at scale.</div>
+            <div class="people"><span class="sans">People</span>Read the needs, feelings, and circumstances behind that feedback, and think through the consequences.</div>
+          </div>
+          <p class="why">The result: solutions to real human problems.</p>
+        </div>
+
+        <div class="pair">
+          <h3>Judgment</h3>
+          <div class="split">
+            <div><span class="sans">AI</span>Suggests options and points out possible gaps.</div>
+            <div class="people"><span class="sans">People</span>Question assumptions, weigh trade-offs, and make the call.</div>
+          </div>
+          <p class="why">The result: better decisions, not just faster ones.</p>
+        </div>
+
+        <div class="pair">
+          <h3>Working together</h3>
+          <div class="split">
+            <div><span class="sans">AI</span>Takes on repetitive work and fills in missing information.</div>
+            <div class="people"><span class="sans">People</span>Use the time saved to talk things through, settle disagreements, and get on the same page.</div>
+          </div>
+          <p class="why">The result: stronger teams, not just busier individuals.</p>
+        </div>
+
+        <div class="pair">
+          <h3>Creativity</h3>
+          <div class="split">
+            <div><span class="sans">AI</span>Helps explore a wide range of possibilities quickly.</div>
+            <div class="people"><span class="sans">People</span>Bring imagination, lived experience, domain knowledge, and the nerve to challenge how things are usually done.</div>
+          </div>
+          <p class="why">The result: more room for creative problem-solving.</p>
+        </div>
+
+        <div class="pair">
+          <h3>Responsibility and trust</h3>
+          <div class="split">
+            <div><span class="sans">AI</span>Provides evidence through automated checks and analysis.</div>
+            <div class="people"><span class="sans">People</span>Make the ethical choices, decide which risks to accept, and answer for the consequences.</div>
+          </div>
+          <p class="why">The result: technology people can understand, question, and trust.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="model">
+      <h2>How the operating model changes</h2>
+      <p>This model puts people at the center of the whole life cycle, from defining the problem to judging whether the outcome was worth it.</p>
+
+      <ol class="flow" aria-label="Operating model, from purpose to outcome">
+        <li class="step purpose">
+          <strong>Human purpose and customer value</strong>
+          <span>Empathy, business goals, ethics, and responsibility set the direction.</span>
+        </li>
+        <li class="down" aria-hidden="true">↓</li>
+        <li>
+          <div class="roles">
+            <div class="step"><strong>Product owner + AI</strong><span>Understand what matters</span></div>
+            <div class="step"><strong>Architect + AI</strong><span>Design responsibly</span></div>
+            <div class="step"><strong>Engineer + AI</strong><span>Build thoughtfully</span></div>
+            <div class="step"><strong>QA + AI</strong><span>Protect quality</span></div>
+          </div>
+        </li>
+        <li class="down" aria-hidden="true">↓</li>
+        <li class="step center">
+          <strong>AIDLC command center</strong>
+          <span>Gives everyone visibility, traceability, and evidence to support their judgment.</span>
+        </li>
+        <li class="down" aria-hidden="true">↓</li>
+        <li class="step outcome">
+          <strong>Human decisions and meaningful outcomes</strong>
+          <span>Trust, learning, real benefit to customers, and clear accountability.</span>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Part of my prototype portfolio. The working code lives in the <a href="https://github.com/mdevi25/customerconnect-api" target="_blank" rel="noopener">customerconnect-api repository</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
