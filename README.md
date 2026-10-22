@@ -1,4 +1,4 @@
-# CustomerConnect API | AI-Assisted Product Delivery Portfolio
+# CustomerConnect API | AI-Assisted Product Development Portfolio
 
 **From business intent to verifiable AI-assisted delivery.**
 
