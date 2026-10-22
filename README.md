@@ -1,12 +1,12 @@
-# CustomerConnect API | AI-Assisted Product Delivery Life Cycle
+# CustomerConnect API | AI-Driven Development Life Cycle (AIDLC)
 
-**From business intent to verifiable AI-assisted delivery.**
+**From business intent to verifiable, AI-driven delivery.**
 
-This portfolio project demonstrates how I connect business requirements, product delivery, technical implementation, and responsible AI adoption.
+This portfolio project shows how I apply the [AWS AI-Driven Development Life Cycle (AI-DLC)](https://aws.amazon.com/blogs/devops/ai-driven-development-life-cycle/) from a product perspective, connecting business requirements, product delivery, technical implementation, and responsible AI adoption.
 
-The objective is not simply to accelerate software development with AI, but to make execution **traceable, testable, and aligned with defined outcomes**.
+The objective is not simply to move faster with AI, but to make AI-driven execution **traceable, testable, and aligned with defined outcomes**. In short: AI drives the execution, and people own the decisions.
 
-**Current status:** Milestone 1 — AIDLC Command Center **completed and formally accepted**. Milestone 2 — CustomerConnect API development **authorized, not started**.
+**Current status:** Milestone 1 (AIDLC Command Center) is **completed and formally accepted**. The first customer-facing requirement, **CC-R01**, has been built and tested and is awaiting human acceptance at Gate G2.
 
 ---
 
@@ -45,7 +45,25 @@ flowchart TD
 
 The Command Center connects delivery artifacts with executable validation rules. Human decision-makers retain responsibility for business priorities, risk acceptance, and formal approvals.
 
-## 2. AIDLC Prototype Operating Model
+## How This Applies AWS AI-DLC
+
+AWS describes AI-DLC through one repeating pattern: **AI creates a plan, asks clarifying questions, and implements only after human validation.** Work runs in three phases (Inception, Construction, and Operations), and each phase provides richer context for the next.
+
+| AWS AI-DLC concept | How this project applies it |
+|---|---|
+| AI-powered execution with human oversight | AI operating instructions define what AI does, its boundaries, and where human review is required |
+| AI defers critical decisions to humans | A human gate closes each phase: **G1** (Inception), **G2** (Construction), **G3** (Operations), with recorded approvals |
+| Persistent context stored in the project repository | The Command Center registers in [`aidlc-control/`](aidlc-control/) hold the plan, dependencies, risks, KPIs, and approvals |
+| Traceability from requirements to deployment | Requirement IDs (such as CC-R01) are linked to implementation and test evidence, and the validator checks record integrity |
+| Consistent application of organizational standards | Gate definitions and validator rules apply the same checks every time |
+
+### Where I adapted the method deliberately
+
+- **Individual AI workspaces instead of mob sessions.** AWS brings the whole team together for Mob Elaboration and Mob Construction. Many teams are distributed, so in my model each role uses its own AI tools and the Command Center serves as the shared space. Gate reviews are where the team comes together to decide.
+- **Named gates.** AWS says AI defers critical decisions to people. I made those decisions explicit as G1, G2, and G3, each with written readiness criteria.
+- **Milestones and requirement IDs.** For this solo prototype, I tracked work as milestones (M1.1 to M1.5) and requirement IDs, rather than AWS's bolts and Units of Work.
+
+## AIDLC Prototype Operating Model
 
 I designed this **prototype operating model** to explore how individuals can use AI to accelerate their own responsibilities while still collaborating through a shared delivery framework. The goal is not to make everyone use the same AI tool, but to keep requirements, delivery expectations, evidence, and human decisions connected.
 
@@ -58,8 +76,8 @@ flowchart TD
     EN["Engineer + AI<br/>Implementation · Code Review"]
     QA["QA + AI<br/>Test Design · Validation · Evidence"]
 
-    CC["AIDLC Command Center<br/>Shared Governance & Verification<br/>Execution Plan · Risks · KPIs · Approvals · Validation"]
-    HD["Evidence-Informed Human Decisions<br/>Readiness Review · Exceptions · Acceptance · Release Decision"]
+    CC["AIDLC Command Center<br/>Shared Governance & Verification<br/>Execution Plan · ROAM Risks · KPIs · Approvals · Validation"]
+    HD["Evidence-Informed Human Decisions<br/>G1 Readiness · G2 Acceptance · G3 Release · Exceptions"]
 
     A --> PO
     A --> AR
@@ -83,24 +101,20 @@ flowchart TD
 
 ### What the layers mean
 
-- **Shared AIDLC Delivery Foundation — the common rules:** The team works from agreed objectives, requirements, policies, and decision rights, even when people use different AI assistants.
-- **Role-specific AI assistance — the individual workspaces:** A Product Owner can use AI to refine requirements, an architect to explore design options, an engineer to draft and review code, and QA to develop test scenarios. Each person reviews their own outputs.
-- **AIDLC Command Center — the shared checkpoint:** This is the layer I prototyped. Its structured records organize work, dependencies, risks, KPIs, and approval references. Its Python validator detects specified structural and integrity issues.
-- **Evidence-informed human decisions — the accountability layer:** Checks and AI-generated insights support reviews, but authorized people decide whether work is accepted or ready for release.
+- **Shared AIDLC Delivery Foundation (the common rules):** The team works from agreed objectives, requirements, policies, and decision rights, even when people use different AI assistants.
+- **Role-specific AI assistance (the individual workspaces):** A Product Owner can use AI to refine requirements, an architect to explore design options, an engineer to draft and review code, and QA to develop test scenarios. Each person reviews their own outputs.
+- **AIDLC Command Center (the shared checkpoint):** This is the layer I prototyped, and it plays the role of AI-DLC's persistent context. Its structured records organize work, dependencies, risks, KPIs, and approval references. Its Python validator detects specified structural and integrity issues.
+- **Evidence-informed human decisions (the accountability layer):** Checks and AI-generated insights support reviews, but authorized people decide at each gate whether work is ready, accepted, or released.
 
-### A simple example: CustomerConnect service discovery
+**What is demonstrated versus illustrative:** The Command Center's registers and validator are implemented and tested; the CC-R01 service-browsing endpoint (`GET /services`) and its API tests also exist, outside the accepted milestone, with acceptance pending. The four role-specific AI workspaces and automatic flow of evidence between tools are **illustrations of the operating model**, not integrated applications or agents in this repository. Traceability between requirements, implementation, and tests is not yet automated.
 
-Suppose a customer-service company needs customers to browse its available services. The Product Owner defines that need as **CC-R01**. The engineer builds `GET /services`, and QA verifies the expected response. The Command Center can record references to that requirement, the implementation, and the test evidence, then validate the integrity of its structured records. The Product Owner still decides whether the behavior meets the business need.
-
-**What is demonstrated versus illustrative:** The Command Center's registers and validator are implemented and tested; the CustomerConnect service-discovery endpoint and automated tests also exist. The four role-specific AI workspaces and automatic flow of evidence between tools are **illustrations of the operating model**, not integrated applications or agents in this repository. The CC-R01 linkage has been made locally and is still undergoing review; it is not a fully automated traceability system.
-
-## What I Built — Milestone 1
+## What I Built: Milestone 1
 
 | Component | Purpose |
 |---|---|
 | AI operating instructions | Define responsibilities, boundaries, and human review expectations |
 | Project charter template | Establish business context and expected outcomes |
-| G1/G2/G3 gate definitions | Document lifecycle-readiness criteria |
+| G1/G2/G3 gate definitions | Document readiness criteria for the Inception, Construction, and Operations gates |
 | Execution plan | Track accountable work items and prerequisites |
 | ROAM risk register | Document delivery risks, ownership, and response actions |
 | KPI register | Distinguish planned targets from evidence-backed measurements |
@@ -108,35 +122,30 @@ Suppose a customer-service company needs customers to browse its available servi
 | Python validator | Check CSV integrity, dependency correctness, and approval-record completeness |
 | Regression-test suite | Verify valid inputs and simulated error conditions |
 
-## How the Project Followed AIDLC
+## How Milestone 1 Followed AIDLC
 
 ```mermaid
 flowchart LR
-    subgraph I["INCEPTION — M1.1 to M1.3"]
+    subgraph I["INCEPTION: M1.1 to M1.3"]
         A["Requirements & Scope"]
         B["AI Operating Rules"]
-        C["Governance, Dependencies, Risks & KPIs"]
+        C["Governance, Dependencies, ROAM Risks & KPIs"]
         A --> B --> C
     end
 
-    subgraph D["CONSTRUCTION — M1.4"]
+    subgraph D["CONSTRUCTION: M1.4 to M1.5"]
         E["Build Python Validator"]
         F["Correct Defects & Validate Logic"]
-        E --> F
-    end
-
-    subgraph V["VERIFICATION — M1.5"]
         G["Automated Regression Tests"]
         H["GitHub Evidence"]
         J["Human Milestone Acceptance"]
-        G --> H --> J
+        E --> F --> G --> H --> J
     end
 
     C --> E
-    F --> G
 ```
 
-This reflects the delivery of the **Command Center itself**. The customer-facing API will follow its own AIDLC lifecycle during Milestone 2.
+This reflects the delivery of the **Command Center itself**. Testing sits inside Construction, as it does in AWS AI-DLC. The Command Center runs locally from the repository and is not deployed, so Operations and its G3 gate were not in scope for this milestone.
 
 ## Verified Technical Results
 
@@ -148,10 +157,29 @@ This reflects the delivery of the **Command Center itself**. The customer-facing
 | Approval-record validation | Passed |
 | Integrated validator execution | Exit code **0** |
 | Git repository | Local `main` synchronized with `origin/main` at acceptance |
-| Milestone 1 human acceptance | **Approved** |
+| Milestone 1 human acceptance (Command Center) | **Approved** |
 | Human effort / productivity savings | **Not measured** |
 
 These results demonstrate tested functionality of the initial Command Center. They do not establish measured productivity improvements or production deployment. The milestone acceptance is recorded in the project working conversation; no claim is made here that the final acceptance decision has been persisted into the CSV approval register.
+
+## One Customer Requirement, Traced End to End
+
+This trace is separate from Milestone 1. Milestone 1 delivered the Command Center itself and was accepted; CC-R01 is the first customer-facing requirement to run through it.
+
+**Story ID:** CC-R01<br>
+**Title:** Browse Available Services
+
+> As a customer, I want to view the services available to me so that I can select the appropriate service before submitting a service request.
+
+| AIDLC step | Evidence | Status |
+|---|---|---|
+| Inception: business requirement | CC-R01, Browse Available Services | Defined |
+| Construction: implementation | FastAPI `GET /services` endpoint | Committed to GitHub |
+| Construction: verification | 4 API tests against the acceptance criteria, checking for HTTP 200 | Passing |
+| Command Center: delivery records | Work item, dependencies, and evidence references linked to CC-R01 | Recorded |
+| Gate G2: human acceptance | Product Owner decision | **Pending** |
+
+The pending status is intentional. Passing tests produce evidence, but only the Product Owner can decide whether the behavior meets the customer need. Traceability between these records is maintained manually and validated for integrity; it is not yet automated.
 
 ## Explore the Repository
 
@@ -160,7 +188,7 @@ These results demonstrate tested functionality of the initial Command Center. Th
 | [`aidlc-control/`](aidlc-control/) | Governance definitions, execution plan, risks, KPIs, and approvals |
 | [`scripts/validate_command_center.py`](scripts/validate_command_center.py) | Python validator implementation |
 | [`tests/test_command_center.py`](tests/test_command_center.py) | Automated positive and negative regression tests |
-| [`aidlc-control/GATE_DEFINITIONS.md`](aidlc-control/GATE_DEFINITIONS.md) | Lifecycle readiness and decision-control model |
+| [`aidlc-control/GATE_DEFINITIONS.md`](aidlc-control/GATE_DEFINITIONS.md) | G1/G2/G3 gate criteria and decision-control model |
 
 ## Run It Yourself
 
@@ -192,20 +220,20 @@ On the accepted Milestone 1 baseline, the expected result is four CSV structural
 I approached the project from both product leadership and technical implementation perspectives:
 
 - Translated delivery challenges into requirements and an implementable solution.
-- Defined a lightweight, human-governed AIDLC operating model.
+- Applied AWS AI-DLC and adapted it into a lightweight, human-governed operating model with explicit phase gates.
 - Established dependency-aware execution planning and risk traceability.
 - Developed and verified executable Python validation functionality using AI-assisted development.
 - Investigated defects, corrected implementation issues, and validated fixes.
 - Managed Git/GitHub version control and demonstrated repeatable testing.
 
-**The capability demonstrated:** Connecting business expectations with engineering execution—and making results inspectable, reproducible, and accountable.
+**The capability demonstrated:** Connecting business expectations with engineering execution, and making results inspectable, reproducible, and accountable.
 
 ## Current Limitations
 
-The Command Center currently validates defined records and relationships. It does not independently authenticate human approvals, automatically optimize sprint priorities, orchestrate multiple agents, or measure realized production business outcomes.
+The Command Center currently validates defined records and relationships. It does not independently authenticate human approvals, automatically optimize priorities, orchestrate multiple agents, or measure realized production business outcomes.
 
 These capabilities are deliberately outside the completed MVP scope.
 
 ---
 
-**Portfolio focus:** Product Ownership · Technical Product Management · AI-Assisted Development · Requirements Traceability · Dependency Management · Automated Verification · Human-Governed Delivery
+**Portfolio focus:** Product Ownership · Technical Product Management · AI-Driven Development (AI-DLC) · Requirements Traceability · Dependency Management · Automated Verification · Human-Governed Delivery
